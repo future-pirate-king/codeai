@@ -1,0 +1,7 @@
+.videoContainer {
+  box-shadow: 8px 12px 100px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  margin: 10px;
+  display: inline-block;
+  height: 315px;
+}

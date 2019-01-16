@@ -1,0 +1,23 @@
+.news-container {
+  box-shadow: 8px 12px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  display: inline-block;
+  height: 315px;
+  width: 85%;
+  max-width: 500px;
+  position: relative;
+}
+
+.news-container .action-btn {
+  padding: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 47%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
