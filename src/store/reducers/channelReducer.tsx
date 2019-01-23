@@ -8,9 +8,6 @@ export interface ChannelModel {
       uploads: String;
     };
   };
-  snippet: {
-    description: String;
-  };
   statistics: StatisticsModel;
   video?: VideoModel[];
 }
@@ -29,6 +26,13 @@ export interface VideoModel {
     width?: String;
     url?: String;
   };
+  statistics: VideoStatisticsModel;
+}
+
+export interface VideoStatisticsModel {
+  likes: String;
+  disLikes: String;
+  views: String;
 }
 
 const initialState: ChannelModel = {
@@ -37,9 +41,6 @@ const initialState: ChannelModel = {
     relatedPlaylists: {
       uploads: ''
     }
-  },
-  snippet: {
-    description: ''
   },
   statistics: {
     subscriberCount: '',

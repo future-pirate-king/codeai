@@ -3,7 +3,7 @@ import { ChannelModel } from '../../store/reducers/channelReducer';
 import { connect } from 'react-redux';
 import { getVideoDetails } from '../../store/actions/channelActions';
 import VideoList from '../Video List/video-list';
-import Carousel from '../Carousel/carousel';
+import VideoContainer from '../Video Container/video-container';
 import ChannelNews from '../Channel News/channel-news';
 
 export interface WrapperProps {
@@ -36,8 +36,20 @@ class Wrapper extends React.Component<WrapperProps, WrapperState> {
                 width: '100%'
               }}
             >
-              <Carousel video={video} />
+              <VideoContainer video={video[0]} />
               <ChannelNews />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+                margin: 10,
+                overflow: 'hidden'
+              }}
+            >
+              <span style={{ fontSize: 24, fontWeight: 500 }}>My Videos</span>
             </div>
             <VideoList video={video} />
           </div>

@@ -1,20 +1,19 @@
 import * as React from 'react';
 import { VideoModel } from '../../store/reducers/channelReducer';
-import './carousel.css';
+import './video-container.css';
 
 export interface CarouselProps {
-  video: VideoModel[];
+  video: VideoModel;
 }
 
-const Carousel: React.SFC<CarouselProps> = props => {
-  console.log(props.video);
+const VideoContainer: React.SFC<CarouselProps> = props => {
   return (
     <div className="videoContainer">
-      {props.video.length > 0 ? (
+      {props.video ? (
         <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/${props.video[0].videoId}`}
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/${props.video.videoId}`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           frameBorder="0"
           allowFullScreen
@@ -24,4 +23,4 @@ const Carousel: React.SFC<CarouselProps> = props => {
   );
 };
 
-export default Carousel;
+export default VideoContainer;
