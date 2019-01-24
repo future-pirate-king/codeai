@@ -1,0 +1,22 @@
+.footer-container {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #323545;
+  margin-top: 20px;
+}
+
+.light-green {
+  color: #03dac5;
+}
+
+.bordered-btn {
+  padding: 10px 40px;
+  border-radius: 2px;
+  border: 2px solid #03dac5;
+  color: #03dac5;
+  text-decoration: none;
+}
