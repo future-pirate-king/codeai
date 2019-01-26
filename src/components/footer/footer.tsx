@@ -39,7 +39,7 @@ const Footer: React.SFC<FooterProps> = () => {
             }}
           >
             <span>
-              Visit <i className="fab fa-youtube fa-lg light-green" /> channel
+              Visit <i className="fab fa-youtube fa-lg primary" /> channel
             </span>
           </a>
           <ul
@@ -53,7 +53,7 @@ const Footer: React.SFC<FooterProps> = () => {
             {social.map(val => (
               <li key={val.icon}>
                 <a href={val.link}>
-                  <i className={`fab fa-${val.icon} light-green`} />
+                  <i className={`fab fa-${val.icon} primary`} />
                 </a>
               </li>
             ))}

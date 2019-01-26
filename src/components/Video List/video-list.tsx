@@ -14,7 +14,7 @@ const VideoList: React.SFC<VideoListProps> = props => {
         <thead>
           <tr>
             {['Title', 'views', 'Published', 'like/dislike'].map(item => (
-              <th className="dark-grey" key={item}>
+              <th className="grey-text text-darken-3" key={item}>
                 {item}
               </th>
             ))}
@@ -48,7 +48,7 @@ const VideoList: React.SFC<VideoListProps> = props => {
                         <span style={{ marginBottom: 10, fontWeight: 500 }}>
                           {video.title}
                         </span>
-                        <span className="grey" style={{ fontSize: 14 }}>
+                        <span className="grey-text" style={{ fontSize: 14 }}>
                           Episode: {props.video.length - index}
                         </span>
                       </div>
@@ -58,18 +58,18 @@ const VideoList: React.SFC<VideoListProps> = props => {
                     <div
                       style={{ display: 'inline-flex', alignItems: 'center' }}
                     >
-                      <i
-                        style={{ color: 'rgba(0,0,0,0.54)' }}
-                        className="fas fa-eye"
-                      />
-                      <span className="grey" style={{ marginLeft: 10 }}>
+                      <i className="fas fa-eye grey-text" />
+                      <span
+                        className="grey-text text-darken-1"
+                        style={{ marginLeft: 10 }}
+                      >
                         {video.statistics.views}
                       </span>
                     </div>
                   </td>
                   <td>
                     <TimeAgo
-                      className="grey"
+                      className="grey-text"
                       datetime={new Date(video.publishedAt as string)}
                     />
                   </td>
@@ -81,7 +81,7 @@ const VideoList: React.SFC<VideoListProps> = props => {
                         style={{ color: '#2196F3' }}
                         className="far fa-thumbs-up"
                       />
-                      <span className="grey" style={{ marginLeft: 10 }}>
+                      <span className="grey-text" style={{ marginLeft: 10 }}>
                         {video.statistics.likes}
                       </span>
                     </div>
@@ -96,7 +96,7 @@ const VideoList: React.SFC<VideoListProps> = props => {
                         style={{ color: '#D50000' }}
                         className="far fa-thumbs-down"
                       />
-                      <span className="grey" style={{ marginLeft: 10 }}>
+                      <span className="grey-text" style={{ marginLeft: 10 }}>
                         {video.statistics.disLikes}
                       </span>
                     </div>

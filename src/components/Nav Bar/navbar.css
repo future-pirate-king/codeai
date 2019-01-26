@@ -56,11 +56,11 @@
 
 .subs .badge {
   position: absolute;
-  top: -12px;
+  top: -8px;
   right: 10px;
-  padding: 5px 10px;
   background-color: #03dac5;
   color: #323545;
   font-size: 12px;
   border-radius: 12px;
+  min-width: 2.4rem;
 }

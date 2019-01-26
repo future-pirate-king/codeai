@@ -47,11 +47,10 @@ class Wrapper extends React.Component<WrapperProps, WrapperState> {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   width: '100%',
-                  margin: 10,
                   overflow: 'hidden'
                 }}
               >
-                <span style={{ fontSize: 24, fontWeight: 500 }}>My Videos</span>
+                <h5>My Videos</h5>
               </div>
               <VideoList video={video} />
             </div>

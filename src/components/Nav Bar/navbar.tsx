@@ -11,7 +11,7 @@ const NavBar: React.SFC<NavBarProps> = props => {
   return (
     <React.Fragment>
       <div className="navbar-container">
-        <h4>codeAi</h4>
+        <h5>codeAi</h5>
         <ul>
           <li>
             <div className="search-container">
