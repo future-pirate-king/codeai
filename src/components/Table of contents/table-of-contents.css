@@ -1,0 +1,32 @@
+#table-of-contents {
+  padding: 20px 45px;
+  box-sizing: border-box;
+  width: 22%;
+  min-width: 250px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+}
+
+#table-of-contents .share li {
+  margin: 15px 0;
+}
+
+#table-of-contents h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#table-of-contents ul {
+  padding-left: 50px;
+}
+
+#table-of-contents ul li a {
+  color: #616161;
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+#table-of-contents ul li a:hover {
+  color: #000000;
+}

@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'materialize-css/dist/css/materialize.min.css';
+import './prism-theme.css';
 import { createStore, applyMiddleware, Store } from 'redux';
 import { Provider } from 'react-redux';
 import { RootReducer, AppState } from './store/reducers/rootReducer';

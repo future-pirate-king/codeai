@@ -1,44 +1,65 @@
 import * as React from 'react';
 import './navbar.css';
 import { StatisticsModel } from '../../store/reducers/channelReducer';
+import { NavLink } from 'react-router-dom';
 
 export interface NavBarProps {
-  statistics: StatisticsModel;
+  className?: String;
+  statistics?: StatisticsModel;
 }
 
 const NavBar: React.SFC<NavBarProps> = props => {
   const { statistics } = props;
   return (
     <React.Fragment>
-      <div className="navbar-container">
-        <h5>codeAi</h5>
-        <ul>
-          <li>
-            <div className="search-container">
-              <div className="search">
-                <i className="fa fa-search grey-text text-lighten-1" />
-                <input type="search" placeholder="Enter topics to search" />
-                {/* <a className="valign-wrapper">
+      <div id="navbar-container">
+        <div className="navbar">
+          <h5>codeAi</h5>
+          <ul>
+            <li>
+              <NavLink className="links" to={'/home'} activeClassName="active">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="links" to={'/videos'}>
+                Videos
+              </NavLink>
+            </li>
+            <li>
+              <div className="search-container">
+                <div className="search">
+                  <i className="fa fa-search grey-text text-lighten-1" />
+                  <input type="search" placeholder="Enter topics to search" />
+                  {/* <a className="valign-wrapper">
             <i className="fa fa-times-circle grey-text" />
           </a> */}
+                </div>
               </div>
-            </div>
-          </li>
-          <li className="subs">
-            Subscribers{' '}
-            <span className="badge z-depth-1">
-              {statistics.subscriberCount}
-            </span>
-            <span style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>
-              |
-            </span>
-          </li>
-          <li>
-            <i style={{ color: '#FF0000' }} className="fab fa-youtube fa-2x" />
-          </li>
-        </ul>
+            </li>
+            {statistics && (
+              <li>
+                <p className="subs">
+                  Subscribers
+                  <span className="badge z-depth-1">
+                    {statistics.subscriberCount}
+                  </span>
+                </p>
+              </li>
+            )}
+            <li>
+              <span style={{ fontSize: 20, fontWeight: 'bold' }}>|</span>
+            </li>
+            <li>
+              <i
+                style={{ color: '#FF0000' }}
+                className="fab fa-youtube fa-2x"
+              />
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="divider" />
+      <div id="nav-offset" />
     </React.Fragment>
   );
 };

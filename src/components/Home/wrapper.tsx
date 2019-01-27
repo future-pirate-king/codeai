@@ -38,7 +38,9 @@ class Wrapper extends React.Component<WrapperProps, WrapperState> {
                   width: '100%'
                 }}
               >
-                <VideoContainer video={video[0]} />
+                {video.length > 0 ? (
+                  <VideoContainer videoId={video[0].videoId} />
+                ) : null}
                 <ChannelNews />
               </div>
               <div

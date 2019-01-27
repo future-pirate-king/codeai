@@ -10,7 +10,7 @@
 }
 
 .primary {
-  color: #03dac5;
+  color: #03dac5 !important;
 }
 
 .bordered-btn {

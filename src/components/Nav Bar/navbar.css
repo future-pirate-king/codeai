@@ -1,4 +1,4 @@
-.navbar-container {
+.navbar {
   width: 100%;
   max-width: 1280px;
   height: 70px;
@@ -9,14 +9,31 @@
   align-items: center;
   justify-content: space-between;
 }
+#nav-offset {
+  height: 70px;
+}
 
-.navbar-container ul {
+h5 {
+  line-height: none;
+  margin: unset;
+}
+
+#navbar-container {
+  width: 100%;
+  position: fixed;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
+}
+
+.navbar ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 60%;
 }
 
-.navbar-container ul li {
+.navbar ul li {
   margin: 0 20px;
   color: #495057;
 }
@@ -56,11 +73,25 @@
 
 .subs .badge {
   position: absolute;
-  top: -8px;
-  right: 10px;
+  top: -14px;
+  right: -8px;
   background-color: #03dac5;
   color: #323545;
   font-size: 12px;
   border-radius: 12px;
   min-width: 2.4rem;
+}
+
+.links {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #616161;
+}
+
+.links:hover {
+  color: #000000;
+}
+
+.active {
+  color: #03dac5 !important;
 }
