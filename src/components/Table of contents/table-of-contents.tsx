@@ -20,7 +20,7 @@ const TableOfContents: React.SFC<TableOfContentsProps> = props => {
           <a href="#video">Video</a>
         </li>
         {props.tableOfContents.map(content => (
-          <li>
+          <li key={content as string}>
             <a
               className="truncate"
               href={`#${content

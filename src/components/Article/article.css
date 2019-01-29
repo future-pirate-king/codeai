@@ -25,8 +25,15 @@
   width: 80%;
 }
 
+#article-contents h4,
+#article-contents .para,
+#article-contents .note,
+#article-contents pre#code {
+  width: 90%;
+}
+
 #article-contents .para {
-  margin: 10px;
+  margin: 0 10px;
   color: #616161;
 }
 
