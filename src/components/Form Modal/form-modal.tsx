@@ -54,11 +54,13 @@ class FormModal extends React.Component<FormModalProps, FormModalState> {
             <div className="row">
               <div className="input-field col s6">
                 <select name="type" onChange={e => this.props.handleChange(e)}>
-                  {['Title', 'Code', 'Paragraph', 'Image', 'Note'].map(val => (
-                    <option key={val} value={val.toLowerCase()}>
-                      {val}
-                    </option>
-                  ))}
+                  {['Heading', 'Code', 'Paragraph', 'Image', 'Note'].map(
+                    val => (
+                      <option key={val} value={val.toLowerCase()}>
+                        {val}
+                      </option>
+                    )
+                  )}
                 </select>
                 <label>Choose type</label>
               </div>

@@ -1,23 +1,5 @@
 import * as React from 'react';
-
-export interface ArticleContentsModel {
-  title: String;
-  tableOfContents: String[];
-  contents?: ContentsModel[];
-}
-
-export interface ContentsModel {
-  heading?: String;
-  code?: {
-    body: String;
-  } | null;
-  body?: String | '';
-  img?: String | null;
-  highlight?: {
-    type: 'note' | 'danger' | 'warn' | String;
-    body: String;
-  };
-}
+import { ContentsModel } from '../../store/reducers/articleReducer';
 
 export interface ArticleContentProps {
   contents: ContentsModel[];

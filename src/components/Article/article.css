@@ -7,7 +7,12 @@
   margin: 0 auto;
 }
 
+.btn-flat:hover {
+  background: #e0e0e0 !important;
+}
+
 #article-contents {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
