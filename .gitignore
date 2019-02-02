@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-# API keys
+# API keys and Firebase config
 environment.ts
 
 # testing
