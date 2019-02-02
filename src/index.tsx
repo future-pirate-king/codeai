@@ -14,6 +14,7 @@ import { reduxFirestore, getFirestore } from 'redux-firestore';
 import * as firebase from 'firebase/app';
 import { firebaseConfig } from './environment';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();

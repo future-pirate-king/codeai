@@ -5,7 +5,7 @@ export interface ArticleContentsModel {
   id: String;
   title: String;
   tableOfContents: String[];
-  contents?: ContentsModel[];
+  contents: ContentsModel[];
 }
 
 export interface ContentsModel {
@@ -21,28 +21,47 @@ export interface ContentsModel {
   };
 }
 
-const initialState: ArticleContentsModel = {
-  id: '',
-  title: '',
-  contents: [],
-  tableOfContents: []
+export interface ArticleStateModel {
+  article: ArticleContentsModel;
+  loading?: boolean;
+  isUpdating?: boolean;
+  imgUploadProgress: number;
+}
+
+const initialState: ArticleStateModel = {
+  article: {
+    id: '',
+    title: '',
+    contents: [],
+    tableOfContents: []
+  },
+  loading: true,
+  isUpdating: false,
+  imgUploadProgress: 0
 };
 
 export const ArticleReducer: Reducer = (
-  state: ArticleContentsModel = initialState,
+  state: ArticleStateModel = initialState,
   action: any
 ) => {
   switch (action.type) {
     case articleActionTypes.GET_ARTICLE:
-      console.log(action.payload);
       return {
         ...state,
-        ...action.payload
+        article: {
+          ...action.payload
+        },
+        loading: false
       };
 
     case articleActionTypes.UPDATE_ARTICLE:
-      console.log('done!');
-      return state;
+      return { ...state, isUpdating: false };
+
+    case articleActionTypes.ARTICLE_UPDATING:
+      return { ...state, isUpdating: true };
+
+    case articleActionTypes.IMAGE_UPLOAD_STATUS:
+      return { ...state, imgUploadProgress: action.payload };
 
     default:
       return state;

@@ -2,13 +2,13 @@ import { combineReducers, Reducer } from 'redux';
 import { ChannelReducer, ChannelModel } from './channelReducer';
 import { LoginReducer, User } from './loginReducer';
 import { firestoreReducer } from 'redux-firestore';
-import { ArticleContentsModel, ArticleReducer } from './articleReducer';
+import { ArticleReducer, ArticleStateModel } from './articleReducer';
 
 export interface AppState {
   channel: ChannelModel;
   login: User;
   firestore: any;
-  article: ArticleContentsModel;
+  article: ArticleStateModel;
 }
 
 export const RootReducer: Reducer<AppState, any> = combineReducers({

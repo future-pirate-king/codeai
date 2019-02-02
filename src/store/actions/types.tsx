@@ -4,7 +4,9 @@ import { ArticleContentsModel } from '../reducers/articleReducer';
 
 export enum articleActionTypes {
   GET_ARTICLE,
-  UPDATE_ARTICLE
+  UPDATE_ARTICLE,
+  ARTICLE_UPDATING,
+  IMAGE_UPLOAD_STATUS
 }
 
 export type Thunk = ActionCreator<
@@ -12,7 +14,7 @@ export type Thunk = ActionCreator<
 >;
 
 export type Services = {
-  getFirebase(): any;
+  getFirebase(): firebase.app.App;
   getFirestore(): firebase.firestore.Firestore;
 };
 

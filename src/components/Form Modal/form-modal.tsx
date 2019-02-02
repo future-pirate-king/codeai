@@ -4,7 +4,7 @@ import { Modal, FormSelect } from 'materialize-css';
 export interface FormModalProps {
   addContent(): void;
   type: string;
-  body: string;
+  body: string | File;
   handleChange(e: React.ChangeEvent<any>): void;
 }
 
@@ -69,7 +69,7 @@ class FormModal extends React.Component<FormModalProps, FormModalState> {
                 <div className="input-field col s12">
                   <textarea
                     name="body"
-                    value={this.props.body}
+                    value={this.props.body as string}
                     onChange={e => this.props.handleChange(e)}
                     id={this.props.type}
                     className="materialize-textarea"
@@ -80,7 +80,12 @@ class FormModal extends React.Component<FormModalProps, FormModalState> {
                 <div className="file-field input-field col s12">
                   <div className="btn">
                     <span>Upload Image</span>
-                    <input type="file" />
+                    <input
+                      name="image"
+                      onChange={e => this.props.handleChange(e)}
+                      type="file"
+                      accept="image/*"
+                    />
                   </div>
                   <div className="file-path-wrapper">
                     <input className="file-path validate" type="text" />
@@ -90,12 +95,13 @@ class FormModal extends React.Component<FormModalProps, FormModalState> {
             </div>
           </div>
           <div className="modal-footer">
-            <a
+            <button
               onClick={this.props.addContent}
+              disabled={this.props.body === ''}
               className="modal-close waves-effect waves-green btn-flat"
             >
               Add
-            </a>
+            </button>
             <a
               href="#!"
               className="modal-close waves-effect waves-green btn-flat"
