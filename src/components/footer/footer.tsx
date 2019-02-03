@@ -18,7 +18,8 @@ const Footer: React.SFC<FooterProps> = () => {
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
-          width: '100%'
+          width: '100%',
+          flexWrap: 'wrap'
         }}
       >
         <div
@@ -66,26 +67,21 @@ const Footer: React.SFC<FooterProps> = () => {
             justifyContent: 'space-between',
             alignItems: 'center'
           }}
+          className="footer-contact"
         >
           <span style={{ color: '#e0e0e0', marginBottom: 10 }}>Contacts</span>
           <a href="" className="bordered-btn">
             <i className="fas fa-envelope" /> samd948@gmail.com
           </a>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start'
-          }}
-        >
+        <div className="footer-content">
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               margin: 10
             }}
+            className="footer-source-code"
           >
             <span style={{ marginRight: 10, color: '#e0e0e0' }}>
               Find the complete project source code at
