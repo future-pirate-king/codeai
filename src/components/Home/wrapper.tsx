@@ -41,7 +41,18 @@ class Wrapper extends React.Component<WrapperProps, WrapperState> {
                 {video.length > 0 ? (
                   <VideoContainer videoId={video[0].videoId} />
                 ) : null}
-                <ChannelNews />
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%'
+                  }}
+                  className="hide-on-med-and-down"
+                >
+                  <ChannelNews />
+                </div>
               </div>
               <div
                 style={{
@@ -49,7 +60,9 @@ class Wrapper extends React.Component<WrapperProps, WrapperState> {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   width: '100%',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  padding: '0px 10px',
+                  boxSizing: 'border-box'
                 }}
               >
                 <h5>My Videos</h5>

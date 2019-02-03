@@ -28,9 +28,7 @@ h5 {
 
 .navbar ul {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 60%;
 }
 
 .navbar ul li {
@@ -83,7 +81,7 @@ h5 {
 }
 
 .links {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #616161;
 }

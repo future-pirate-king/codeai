@@ -19,19 +19,20 @@ const TableOfContents: React.SFC<TableOfContentsProps> = props => {
         <li>
           <a href="#video">Video</a>
         </li>
-        {props.tableOfContents.map(content => (
-          <li key={content as string}>
-            <a
-              className="truncate"
-              href={`#${content
-                .toLowerCase()
-                .split(' ')
-                .join('-')}`}
-            >
-              {content}
-            </a>
-          </li>
-        ))}
+        {props.tableOfContents &&
+          props.tableOfContents.map(content => (
+            <li key={content as string}>
+              <a
+                className="truncate"
+                href={`#${content
+                  .toLowerCase()
+                  .split(' ')
+                  .join('-')}`}
+              >
+                {content}
+              </a>
+            </li>
+          ))}
       </ul>
       <div>
         <strong className="grey-text text-darken-3">Share on:</strong>
