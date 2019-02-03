@@ -8,7 +8,8 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path={['/', '/home']} component={Home} exact />
+          <Route path="/" component={Home} exact />
+          <Route path="/home" component={Home} exact />
           <Route path="/videos/:id" component={Article} />
         </Switch>
       </BrowserRouter>
