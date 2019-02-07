@@ -27,7 +27,7 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
     return (
       <div className="video-list-container">
         <table className="centered highlight">
-          <thead>
+          <thead className="hide-on-med-for-list">
             <tr>
               {['Title', 'views', 'Published', 'like/dislike'].map(item => (
                 <th className="grey-text text-darken-3" key={item}>
@@ -45,81 +45,55 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
                     onClick={() => this.handleClick(video.videoId)}
                   >
                     <td>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center'
-                        }}
-                      >
+                      <div className="video-details">
                         <img
                           width="120"
                           height="80"
                           className="z-depth-2"
                           src={video.thumbnail!.url as string}
                         />
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'flex-start',
-                            marginLeft: 40
-                          }}
-                        >
-                          <span style={{ marginBottom: 10, fontWeight: 500 }}>
+                        <div className="content">
+                          <span
+                            id="video-details-heading"
+                            className="truncate"
+                            style={{ marginBottom: 10 }}
+                          >
                             {video.title}
                           </span>
-                          <span className="grey-text" style={{ fontSize: 14 }}>
+                          <span className="grey-text">
                             Episode: {this.props.video.length - index}
                           </span>
+                          <div
+                            style={{
+                              display: 'none',
+                              width: 160,
+                              marginTop: 8
+                            }}
+                            className="show-on-med-for-list"
+                          >
+                            <Views views={video.statistics.views} />
+                            <Reactions
+                              likes={video.statistics.likes}
+                              disLikes={video.statistics.disLikes}
+                            />
+                          </div>
                         </div>
                       </div>
                     </td>
-                    <td>
-                      <div
-                        style={{ display: 'inline-flex', alignItems: 'center' }}
-                      >
-                        <i className="fas fa-eye grey-text" />
-                        <span
-                          className="grey-text text-darken-1"
-                          style={{ marginLeft: 10 }}
-                        >
-                          {video.statistics.views}
-                        </span>
-                      </div>
+                    <td className="hide-on-med-for-list">
+                      <Views views={video.statistics.views} />
                     </td>
-                    <td>
+                    <td className="hide-on-med-for-list">
                       <TimeAgo
                         className="grey-text"
                         datetime={new Date(video.publishedAt as string)}
                       />
                     </td>
-                    <td>
-                      <div
-                        style={{ display: 'inline-flex', alignItems: 'center' }}
-                      >
-                        <i
-                          style={{ color: '#2196F3' }}
-                          className="far fa-thumbs-up"
-                        />
-                        <span className="grey-text" style={{ marginLeft: 10 }}>
-                          {video.statistics.likes}
-                        </span>
-                      </div>
-                      <div
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          marginLeft: 10
-                        }}
-                      >
-                        <i
-                          style={{ color: '#D50000' }}
-                          className="far fa-thumbs-down"
-                        />
-                        <span className="grey-text" style={{ marginLeft: 10 }}>
-                          {video.statistics.disLikes}
-                        </span>
-                      </div>
+                    <td className="hide-on-med-for-list">
+                      <Reactions
+                        likes={video.statistics.likes}
+                        disLikes={video.statistics.disLikes}
+                      />
                     </td>
                   </tr>
                 ))
@@ -130,5 +104,41 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
     );
   }
 }
+
+const Views = (props: { views: String }) => {
+  return (
+    <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <i className="fas fa-eye grey-text" />
+      <span className="grey-text text-darken-1" style={{ marginLeft: 10 }}>
+        {props.views}
+      </span>
+    </div>
+  );
+};
+
+const Reactions = (props: { likes: String; disLikes: String }) => {
+  return (
+    <React.Fragment>
+      <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+        <i style={{ color: '#2196F3' }} className="far fa-thumbs-up" />
+        <span className="grey-text" style={{ marginLeft: 10 }}>
+          {props.likes}
+        </span>
+      </div>
+      <div
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          marginLeft: 10
+        }}
+      >
+        <i style={{ color: '#D50000' }} className="far fa-thumbs-down" />
+        <span className="grey-text" style={{ marginLeft: 10 }}>
+          {props.disLikes}
+        </span>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default VideoList;
