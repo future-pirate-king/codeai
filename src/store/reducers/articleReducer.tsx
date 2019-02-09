@@ -54,15 +54,6 @@ export const ArticleReducer: Reducer = (
         loading: false
       };
 
-    case articleActionTypes.UPDATE_ARTICLE:
-      return { ...state, isUpdating: false };
-
-    case articleActionTypes.ARTICLE_UPDATING:
-      return { ...state, isUpdating: true };
-
-    case articleActionTypes.IMAGE_UPLOAD_STATUS:
-      return { ...state, imgUploadProgress: action.payload };
-
     default:
       return state;
   }

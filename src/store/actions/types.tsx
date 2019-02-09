@@ -3,10 +3,7 @@ import { ThunkAction } from 'redux-thunk';
 import { ArticleContentsModel } from '../reducers/articleReducer';
 
 export enum articleActionTypes {
-  GET_ARTICLE,
-  UPDATE_ARTICLE,
-  ARTICLE_UPDATING,
-  IMAGE_UPLOAD_STATUS
+  GET_ARTICLE
 }
 
 export type Thunk = ActionCreator<
