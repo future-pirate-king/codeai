@@ -67,7 +67,8 @@ export const ChannelReducer: Reducer<ChannelModel, any> = (
     case channelActionTypes.GET_VIDEO_DETAILS:
       return {
         ...state,
-        video: action.payload
+        video: action.payload,
+        loading: false
       };
   }
   return state;

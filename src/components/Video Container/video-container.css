@@ -19,6 +19,7 @@
     height: auto !important;
     overflow: hidden;
     margin: 0;
+    width: 100% !important;
   }
 
   .videoContainer iframe,

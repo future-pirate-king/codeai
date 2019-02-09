@@ -37,75 +37,76 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
             </tr>
           </thead>
           <tbody>
-            {this.props.video.length > 0
-              ? this.props.video.map((video, index) => (
-                  <tr
-                    style={{ cursor: 'pointer' }}
-                    key={video.videoId as string}
-                    onClick={() => this.handleClick(video.videoId)}
-                  >
-                    <td>
-                      <div className="video-details">
-                        <img
-                          width="120"
-                          height="80"
-                          className="z-depth-2"
-                          src={video.thumbnail!.url as string}
-                        />
-                        <div className="content">
-                          <span
-                            id="video-details-heading"
-                            className="truncate"
-                            style={{ marginBottom: 10 }}
-                          >
-                            {video.title}
-                          </span>
-                          <span
-                            className="grey-text"
-                            style={{ display: 'inline-flex' }}
-                          >
-                            Episode: {this.props.video.length - index}
-                            <TimeAgo
-                              style={{ display: 'none', marginLeft: 15 }}
-                              className="grey-text show-on-med-for-list"
-                              datetime={new Date(video.publishedAt as string)}
-                            />
-                          </span>
-                          <div
-                            style={{
-                              display: 'none',
-                              width: 160,
-                              marginTop: 8
-                            }}
-                            className="show-on-med-for-list"
-                          >
-                            <Views views={video.statistics.views} />
-                            <Reactions
-                              likes={video.statistics.likes}
-                              disLikes={video.statistics.disLikes}
-                            />
+            {this.props.video &&
+              (this.props.video.length > 0
+                ? this.props.video.map((video, index) => (
+                    <tr
+                      style={{ cursor: 'pointer' }}
+                      key={video.videoId as string}
+                      onClick={() => this.handleClick(video.videoId)}
+                    >
+                      <td>
+                        <div className="video-details">
+                          <img
+                            width="120"
+                            height="80"
+                            className="z-depth-2"
+                            src={video.thumbnail!.url as string}
+                          />
+                          <div className="content">
+                            <span
+                              id="video-details-heading"
+                              className="truncate"
+                              style={{ marginBottom: 10 }}
+                            >
+                              {video.title}
+                            </span>
+                            <span
+                              className="grey-text"
+                              style={{ display: 'inline-flex' }}
+                            >
+                              Episode: {this.props.video.length - index}
+                              <TimeAgo
+                                style={{ display: 'none', marginLeft: 15 }}
+                                className="grey-text show-on-med-for-list"
+                                datetime={new Date(video.publishedAt as string)}
+                              />
+                            </span>
+                            <div
+                              style={{
+                                display: 'none',
+                                width: 160,
+                                marginTop: 8
+                              }}
+                              className="show-on-med-for-list"
+                            >
+                              <Views views={video.statistics.views} />
+                              <Reactions
+                                likes={video.statistics.likes}
+                                disLikes={video.statistics.disLikes}
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="hide-on-med-for-list">
-                      <Views views={video.statistics.views} />
-                    </td>
-                    <td className="hide-on-med-for-list">
-                      <TimeAgo
-                        className="grey-text"
-                        datetime={new Date(video.publishedAt as string)}
-                      />
-                    </td>
-                    <td className="hide-on-med-for-list">
-                      <Reactions
-                        likes={video.statistics.likes}
-                        disLikes={video.statistics.disLikes}
-                      />
-                    </td>
-                  </tr>
-                ))
-              : null}
+                      </td>
+                      <td className="hide-on-med-for-list">
+                        <Views views={video.statistics.views} />
+                      </td>
+                      <td className="hide-on-med-for-list">
+                        <TimeAgo
+                          className="grey-text"
+                          datetime={new Date(video.publishedAt as string)}
+                        />
+                      </td>
+                      <td className="hide-on-med-for-list">
+                        <Reactions
+                          likes={video.statistics.likes}
+                          disLikes={video.statistics.disLikes}
+                        />
+                      </td>
+                    </tr>
+                  ))
+                : null)}
           </tbody>
         </table>
       </div>

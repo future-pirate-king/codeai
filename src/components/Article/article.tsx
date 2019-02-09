@@ -181,10 +181,12 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           </div>
         )}
         <div id="article-container">
-          <TableOfContents tableOfContents={tableOfContents} />
+          <div className="hide-on-med-and-down">
+            <TableOfContents tableOfContents={tableOfContents} />
+          </div>
           <div id="article-contents">
             <h4>{title}</h4>
-            <div className="scrollspy" id="video">
+            <div className="scrollspy" id="article-video">
               <VideoContainer
                 videoId={this.props.match.params.id}
                 width={800}
@@ -213,7 +215,8 @@ class Article extends React.Component<ArticleProps, ArticleState> {
                 borderRadius: 30,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-around'
+                justifyContent: 'space-around',
+                background: '#ffffff'
               }}
               className="z-depth-5"
             >

@@ -7,6 +7,10 @@
   margin: 0 auto;
 }
 
+#article-video {
+  width: 100%;
+}
+
 .btn-flat:hover {
   background: #e0e0e0 !important;
 }
@@ -74,4 +78,26 @@ pre#code {
   margin: 10px;
   border-radius: 5px;
   box-shadow: 8px 12px 50px rgba(0, 0, 0, 0.15);
+}
+
+@media only screen and (max-width: 991px) {
+  #article-contents {
+    width: 100%;
+  }
+
+  h4 {
+    font-size: 1.8rem !important;
+  }
+
+  #article-video {
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  h4 {
+    font-size: 1.6rem !important;
+  }
 }
