@@ -10,6 +10,7 @@ export interface ChannelModel {
   };
   statistics: StatisticsModel;
   video?: VideoModel[];
+  loading?: boolean;
 }
 
 export interface StatisticsModel {
@@ -27,6 +28,7 @@ export interface VideoModel {
     url?: String;
   };
   statistics: VideoStatisticsModel;
+  loading?: boolean;
 }
 
 export interface VideoStatisticsModel {
@@ -46,7 +48,8 @@ const initialState: ChannelModel = {
     subscriberCount: '',
     videoCount: ''
   },
-  video: []
+  video: [],
+  loading: true
 };
 
 export const ChannelReducer: Reducer<ChannelModel, any> = (
@@ -57,7 +60,8 @@ export const ChannelReducer: Reducer<ChannelModel, any> = (
     case channelActionTypes.GET_CHANNEL_DETAILS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
+        loading: false
       };
 
     case channelActionTypes.GET_VIDEO_DETAILS:

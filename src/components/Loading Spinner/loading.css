@@ -1,0 +1,121 @@
+.load-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  max-height: 100vh;
+  overflow: hidden;
+  display: inline-flex;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+.load-container nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.load-container nav span {
+  width: 100px;
+  height: 30px;
+  border-radius: 2px;
+}
+
+.load-container nav span {
+  background-color: #e0e0e0;
+  animation: blink 1s ease-in-out infinite;
+}
+
+.load-container nav div i {
+  color: #e0e0e0;
+  animation: blink 1s ease-in-out infinite;
+}
+
+.load-container nav div span {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  margin-right: 15px;
+}
+
+.load-container nav div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.load-container main {
+  margin: 10px 0;
+  display: flex;
+  width: 100%;
+  height: 40%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.load-container main section {
+  width: 40%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@media only screen and (max-width: 991px) {
+  .load-container main section {
+    width: 100%;
+    margin: 0 10px;
+    max-width: 600px;
+  }
+}
+
+.load-container .video-list-load {
+  height: 40%;
+}
+
+.load-container .video-list-load ul {
+  height: 100%;
+}
+
+.load-container .video-list-load ul li {
+  height: 40%;
+  margin: 15px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.load-container .video-list-load ul li div {
+  height: 100%;
+  width: 80%;
+}
+
+.load-container .video-list-load ul li div div {
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  margin: 10px;
+  animation: blink 1s ease-in-out infinite;
+}
+
+.load-container .video-list-load ul li aside {
+  width: 20%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}

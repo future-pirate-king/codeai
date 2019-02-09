@@ -26,16 +26,16 @@ const NavBar: React.SFC<NavBarProps> = props => {
                 Videos
               </NavLink>
             </li>
-            <li>
-              <div className="search-container">
-                <div className="search">
-                  <i className="fa fa-search grey-text text-lighten-1" />
-                  <input type="search" placeholder="Enter topics to search" />
-                  {/* <a className="valign-wrapper">
-            <i className="fa fa-times-circle grey-text" />
-          </a> */}
-                </div>
-              </div>
+            <li className="hide-searchbar">
+              <SearchBar />
+            </li>
+            <li style={{ display: 'none' }} className="show-searchbar-med">
+              <a
+                style={{ background: 'transparent' }}
+                className="btn btn-floating z-depth-0 waves-effect"
+              >
+                <i className="fa fa-search grey-text text-darken-2" />
+              </a>
             </li>
             {statistics && (
               <li>
@@ -45,6 +45,9 @@ const NavBar: React.SFC<NavBarProps> = props => {
                     {statistics.subscriberCount}
                   </span>
                 </p>
+                <span style={{ display: 'none' }} className="badge show-badge">
+                  {statistics.subscriberCount}
+                </span>
               </li>
             )}
             <li>
@@ -61,6 +64,20 @@ const NavBar: React.SFC<NavBarProps> = props => {
       </div>
       <div id="nav-offset" />
     </React.Fragment>
+  );
+};
+
+export const SearchBar = () => {
+  return (
+    <div className="search-container">
+      <div className="search">
+        <i className="fa fa-search grey-text text-lighten-1" />
+        <input type="search" placeholder="Enter topics to search" />
+        {/* <a className="valign-wrapper">
+            <i className="fa fa-times-circle grey-text" />
+          </a> */}
+      </div>
+    </div>
   );
 };
 

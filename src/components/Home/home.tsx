@@ -5,6 +5,8 @@ import { ChannelModel } from '../../store/reducers/channelReducer';
 import { getChannelDetails } from '../../store/actions/channelActions';
 import Wrapper from './wrapper';
 import NavBar from '../Nav Bar/navbar';
+import { AppState } from '../../store/reducers/rootReducer';
+import PageLoading from '../Loading Spinner/page-loading';
 
 class Home extends React.Component<HomeProps, HomeState> {
   componentWillMount = () => {
@@ -17,8 +19,14 @@ class Home extends React.Component<HomeProps, HomeState> {
     return (
       channel.id && (
         <React.Fragment>
-          <NavBar statistics={channel.statistics} />
-          <Wrapper channel={channel} />
+          {!channel.loading ? (
+            <React.Fragment>
+              <NavBar statistics={channel.statistics} />
+              <Wrapper channel={channel} />
+            </React.Fragment>
+          ) : (
+            <PageLoading nav={true} />
+          )}
         </React.Fragment>
       )
     );
@@ -34,7 +42,7 @@ export interface HomeState {
   channel: ChannelModel;
 }
 
-const mapStateToProps = (state: HomeState) => {
+const mapStateToProps = (state: AppState) => {
   return {
     channel: state.channel
   };

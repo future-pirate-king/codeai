@@ -1,0 +1,11 @@
+.mobile-video-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 659px) {
+  .mobile-video-cont {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}

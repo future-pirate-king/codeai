@@ -17,6 +17,10 @@
   margin-left: 40px;
 }
 
+.video-details img {
+  border-radius: 4px;
+}
+
 @media only screen and (max-width: 750px) {
   .hide-on-med-for-list {
     display: none;
@@ -31,7 +35,7 @@
 
 @media only screen and (max-width: 500px) {
   .video-details {
-    font-size: 0.9rem !important;
+    font-size: 1rem !important;
     padding: 0 8px;
   }
 
@@ -43,7 +47,8 @@
   }
   .video-details img {
     width: 90px !important;
-    height: 60px !important;
+    height: 65px !important;
+    border-radius: 3px;
   }
 }
 

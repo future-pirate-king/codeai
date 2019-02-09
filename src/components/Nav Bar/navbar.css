@@ -32,7 +32,7 @@ h5 {
 }
 
 .navbar ul li {
-  margin: 0 20px;
+  margin: 0 0 0 1.5em;
   color: #495057;
 }
 
@@ -67,6 +67,7 @@ h5 {
 .subs {
   position: relative;
   font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .subs .badge {
@@ -81,7 +82,7 @@ h5 {
 }
 
 .links {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #616161;
 }
@@ -92,4 +93,49 @@ h5 {
 
 .active {
   color: #03dac5 !important;
+}
+
+@media only screen and (max-width: 850px) {
+  .hide-searchbar {
+    display: none;
+  }
+
+  .show-searchbar-med {
+    display: inline-block !important;
+  }
+
+  .navbar ul li {
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .subs {
+    display: none;
+  }
+
+  .show-searchbar-med {
+    display: none !important;
+  }
+
+  .show-searchbar-small {
+    display: inline-block !important;
+  }
+
+  .navbar ul li {
+    margin-left: 1rem;
+  }
+
+  .show-badge {
+    display: inline-block !important;
+  }
+
+  .badge {
+    background-color: #03dac5;
+    color: #323545;
+    font-size: 12px;
+    border-radius: 12px;
+    min-width: 2.4rem;
+    margin-left: unset !important;
+  }
 }

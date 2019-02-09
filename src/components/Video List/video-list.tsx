@@ -60,8 +60,16 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
                           >
                             {video.title}
                           </span>
-                          <span className="grey-text">
+                          <span
+                            className="grey-text"
+                            style={{ display: 'inline-flex' }}
+                          >
                             Episode: {this.props.video.length - index}
+                            <TimeAgo
+                              style={{ display: 'none', marginLeft: 15 }}
+                              className="grey-text show-on-med-for-list"
+                              datetime={new Date(video.publishedAt as string)}
+                            />
                           </span>
                           <div
                             style={{
@@ -107,7 +115,7 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
 
 const Views = (props: { views: String }) => {
   return (
-    <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+    <div style={{ display: 'inline-flex', alignItems: 'baseline' }}>
       <i className="fas fa-eye grey-text" />
       <span className="grey-text text-darken-1" style={{ marginLeft: 10 }}>
         {props.views}
@@ -119,7 +127,7 @@ const Views = (props: { views: String }) => {
 const Reactions = (props: { likes: String; disLikes: String }) => {
   return (
     <React.Fragment>
-      <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <div style={{ display: 'inline-flex', alignItems: 'baseline' }}>
         <i style={{ color: '#2196F3' }} className="far fa-thumbs-up" />
         <span className="grey-text" style={{ marginLeft: 10 }}>
           {props.likes}
@@ -128,7 +136,7 @@ const Reactions = (props: { likes: String; disLikes: String }) => {
       <div
         style={{
           display: 'inline-flex',
-          alignItems: 'center',
+          alignItems: 'baseline',
           marginLeft: 10
         }}
       >
