@@ -7,7 +7,7 @@
   margin: 0 auto;
 }
 
-#article-video {
+.article-video {
   width: 100%;
 }
 
@@ -89,7 +89,7 @@ pre#code {
     font-size: 1.8rem !important;
   }
 
-  #article-video {
+  .article-video {
     padding: 0 10px;
     display: flex;
     justify-content: center;

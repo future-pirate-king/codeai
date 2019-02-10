@@ -1,10 +1,7 @@
 import * as React from 'react';
 import VideoContainer from '../Video Container/video-container';
 import NavBar from '../Nav Bar/navbar';
-import { ScrollSpy } from 'materialize-css';
 import TableOfContents from '../Table of contents/table-of-contents';
-import { highlightAll } from 'prismjs';
-import 'prismjs/components/prism-python.min';
 import './article.css';
 import ArticleContent from '../Article Content/article-content';
 import {
@@ -15,6 +12,9 @@ import { getArticle } from '../../store/actions/articleActions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { AppState } from '../../store/reducers/rootReducer';
+import { ScrollSpy } from 'materialize-css';
+import { highlightAll } from 'prismjs';
+import 'prismjs/components/prism-python.min';
 export interface ArticleProps {
   match: {
     params: {
@@ -28,7 +28,6 @@ export interface ArticleProps {
 export interface ArticleState {
   article: ArticleContentsModel;
 }
-
 class Article extends React.Component<ArticleProps, ArticleState> {
   state: ArticleState = {
     article: {
@@ -37,11 +36,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       contents: [],
       tableOfContents: []
     }
-  };
-
-  componentDidMount = () => {
-    highlightAll();
-    this.initScrollspy();
   };
 
   componentWillMount = () => {
@@ -54,11 +48,16 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     this.initScrollspy();
   };
 
+  componentDidMount = () => {
+    highlightAll();
+    this.initScrollspy();
+  };
+
   initScrollspy = () => {
     const scrollspy = document.querySelectorAll('.scrollspy');
+
     ScrollSpy.init(scrollspy, {
-      activeClass: 'scroll-active',
-      scrollOffset: 200
+      activeClass: 'scroll-active'
     });
   };
 
@@ -74,12 +73,15 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         <NavBar />
 
         <div id="article-container">
-          <div className="hide-on-med-and-down">
-            <TableOfContents tableOfContents={tableOfContents} />
+          <div>
+            {tableOfContents &&
+              (tableOfContents.length > 0 ? (
+                <TableOfContents tableOfContents={tableOfContents} />
+              ) : null)}
           </div>
           <div id="article-contents">
             <h4>{title}</h4>
-            <div className="scrollspy" id="article-video">
+            <div className="scrollspy article-video" id="video">
               <VideoContainer
                 videoId={this.props.match.params.id}
                 width={800}
