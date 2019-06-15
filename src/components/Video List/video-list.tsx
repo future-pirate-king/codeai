@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { VideoModel } from '../../store/reducers/channelReducer';
 import './video-list.css';
 // @ts-ignore
 import TimeAgo from 'timeago-react';
 import { Redirect } from 'react-router';
+import { VideoModel } from '../../models/video';
 
 export interface VideoListProps {
   video: VideoModel[];

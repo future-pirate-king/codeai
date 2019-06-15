@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContentsModel } from '../../store/reducers/articleReducer';
+import { ContentsModel } from '../../models/article';
 export interface ArticleContentProps {
   contents: ContentsModel[];
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './navbar.css';
-import { StatisticsModel } from '../../store/reducers/channelReducer';
 import { NavLink } from 'react-router-dom';
+import { StatisticsModel } from '../../models/channel';
 
 export interface NavBarProps {
   className?: String;

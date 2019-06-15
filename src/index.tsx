@@ -5,15 +5,10 @@ import * as serviceWorker from './serviceWorker';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import './prism-theme.css';
-import * as firebase from 'firebase/app';
-import { firebaseConfig } from './environment';
 import 'firebase/firestore';
 import 'firebase/storage';
 import { StoreProvider } from 'easy-peasy';
 import store from './store';
-
-firebase.initializeApp(firebaseConfig);
-firebase.firestore();
 
 ReactDOM.render(
   <StoreProvider store={store}>
