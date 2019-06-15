@@ -1,54 +1,30 @@
 import * as React from 'react';
 import './home.css';
-import { connect } from 'react-redux';
-import { ChannelModel } from '../../store/reducers/channelReducer';
-import { getChannelDetails } from '../../store/actions/channelActions';
 import Wrapper from './wrapper';
 import NavBar from '../Nav Bar/navbar';
-import { AppState } from '../../store/reducers/rootReducer';
 import PageLoading from '../Loading Spinner/page-loading';
+import { useStoreActions, useStoreState } from '../../store';
 
-class Home extends React.Component<HomeProps, HomeState> {
-  componentWillMount = () => {
-    this.props.getChannelDetails();
-  };
+const Home: React.FunctionComponent<{}> = () => {
+  const fetchChannel = useStoreActions(action => action.channel.fetchChannel);
+  const channel = useStoreState(state => state.channel.channel);
 
-  render() {
-    const { channel } = this.props;
+  React.useEffect(() => {
+    fetchChannel();
+  }, [channel]);
 
-    return (
-      channel.id && (
+  return (
+    <React.Fragment>
+      {!channel.loading ? (
         <React.Fragment>
-          {!channel.loading ? (
-            <React.Fragment>
-              <NavBar statistics={channel.statistics} />
-              <Wrapper channel={channel} />
-            </React.Fragment>
-          ) : (
-            <PageLoading nav={true} />
-          )}
+          <NavBar statistics={channel.statistics} />
+          <Wrapper channel={channel} />
         </React.Fragment>
-      )
-    );
-  }
-}
-
-export interface HomeProps {
-  channel: ChannelModel;
-  getChannelDetails(): void;
-}
-
-export interface HomeState {
-  channel: ChannelModel;
-}
-
-const mapStateToProps = (state: AppState) => {
-  return {
-    channel: state.channel
-  };
+      ) : (
+        <PageLoading nav={true} />
+      )}
+    </React.Fragment>
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  { getChannelDetails }
-)(Home);
+export default Home;
