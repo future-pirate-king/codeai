@@ -1,8 +1,6 @@
 import * as React from 'react';
 import './footer.css';
 
-export interface FooterProps {}
-
 const social = [
   { icon: 'twitter', link: '' },
   { icon: 'instagram', link: '' },
@@ -10,7 +8,7 @@ const social = [
   { icon: 'quora', link: '' }
 ];
 
-const Footer: React.SFC<FooterProps> = () => {
+const Footer: React.FunctionComponent<{}> = () => {
   return (
     <div className="footer-container">
       <div

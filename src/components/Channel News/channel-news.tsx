@@ -1,9 +1,7 @@
 import * as React from 'react';
 import './channel-news.css';
 
-export interface ChannelNewsProps {}
-
-const ChannelNews: React.SFC<ChannelNewsProps> = () => {
+const ChannelNews: React.FunctionComponent<{}> = () => {
   return (
     <div className="news-container">
       <a className="action-btn z-depth-2" style={{ left: '-1.5rem' }}>

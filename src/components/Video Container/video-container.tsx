@@ -7,7 +7,7 @@ export interface CarouselProps {
   height?: string | number;
 }
 
-const VideoContainer: React.SFC<CarouselProps> = props => {
+const VideoContainer: React.FunctionComponent<CarouselProps> = props => {
   return (
     <div
       style={{

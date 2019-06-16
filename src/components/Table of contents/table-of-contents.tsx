@@ -3,7 +3,7 @@ import './table-of-contents.css';
 import { Transition, animated } from 'react-spring/renderprops';
 
 export interface TableOfContentsProps {
-  tableOfContents: String[];
+  tableOfContents: string[];
 }
 
 const socialIcons = [
@@ -12,83 +12,72 @@ const socialIcons = [
   { icon: 'quora', link: '', action: null }
 ];
 
-export interface TableOfContentsState {
-  showTableOfContents: boolean;
-}
-
-class TableOfContents extends React.Component<
-  TableOfContentsProps,
-  TableOfContentsState
-> {
-  state: TableOfContentsState = { showTableOfContents: false };
-
-  toggleContent = () => {
-    const { showTableOfContents } = this.state;
-    this.setState({ showTableOfContents: !showTableOfContents });
-  };
-
-  render() {
-    const { tableOfContents } = this.props;
-    const { showTableOfContents } = this.state;
-    return (
-      <Transition
-        native
-        items={showTableOfContents as any}
-        from={{
-          right: 0,
-          position: 'fixed' as React.CSSProperties,
-          zIndex: 1
-        }}
-        enter={{ right: 170 }}
-        leave={{ right: 0 }}
-      >
-        {show =>
-          show &&
-          (props => (
-            <animated.div style={props}>
-              <div id="table-of-contents">
-                <ContentBtn toggleContent={this.toggleContent} />
-                <h5>Table of contents</h5>
-                <ul>
-                  <li>
-                    <a href="#video">Video</a>
+const TableOfContents: React.FunctionComponent<TableOfContentsProps> = ({
+  tableOfContents
+}) => {
+  const [showTableOfContents, setShowTableOfContents] = React.useState(false);
+  return (
+    <Transition
+      native
+      items={showTableOfContents as any}
+      from={{
+        right: 0,
+        position: 'fixed' as React.CSSProperties,
+        zIndex: 1
+      }}
+      enter={{ right: 170 }}
+      leave={{ right: 0 }}
+    >
+      {show =>
+        show &&
+        (props => (
+          <animated.div style={props}>
+            <div id="table-of-contents">
+              <ContentBtn
+                toggleContent={() =>
+                  setShowTableOfContents(!showTableOfContents)
+                }
+              />
+              <h5>Table of contents</h5>
+              <ul>
+                <li>
+                  <a href="#video">Video</a>
+                </li>
+                {tableOfContents.map(content => (
+                  <li key={content as string}>
+                    <a
+                      className="truncate"
+                      href={`#${content
+                        .toLowerCase()
+                        .split(' ')
+                        .join('-')}`}
+                    >
+                      {content}
+                    </a>
                   </li>
-                  {tableOfContents.map(content => (
-                    <li key={content as string}>
-                      <a
-                        className="truncate"
-                        href={`#${content
-                          .toLowerCase()
-                          .split(' ')
-                          .join('-')}`}
-                      >
-                        {content}
-                      </a>
+                ))}
+              </ul>
+              <div>
+                <strong className="grey-text text-darken-3">Share on:</strong>
+                <ul className="share">
+                  {socialIcons.map(social => (
+                    <li key={social.icon}>
+                      <i
+                        className={`fab fa-${
+                          social.icon
+                        } fa-lg grey-text text-darken-3`}
+                      />
                     </li>
                   ))}
                 </ul>
-                <div>
-                  <strong className="grey-text text-darken-3">Share on:</strong>
-                  <ul className="share">
-                    {socialIcons.map(social => (
-                      <li key={social.icon}>
-                        <i
-                          className={`fab fa-${
-                            social.icon
-                          } fa-lg grey-text text-darken-3`}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
-            </animated.div>
-          ))
-        }
-      </Transition>
-    );
-  }
-}
+            </div>
+          </animated.div>
+        ))
+      }
+    </Transition>
+  );
+};
 
 const ContentBtn = (props: { toggleContent(): void }) => (
   <a

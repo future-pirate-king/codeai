@@ -69,7 +69,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = ({ channel }) => {
                   <i className="fa fa-search grey-text text-darken-3" />
                 </a>
               </div>
-              <VideoList video={videos} />
+              <VideoList videoList={videos} />
             </div>
             <Footer />
           </React.Fragment>

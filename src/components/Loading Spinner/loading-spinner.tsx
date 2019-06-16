@@ -6,7 +6,7 @@ export interface LoadingSpinnerProps {
   size: number;
 }
 
-const LoadingSpinner: React.SFC<LoadingSpinnerProps> = props => {
+const LoadingSpinner: React.FunctionComponent<LoadingSpinnerProps> = props => {
   return (
     <React.Fragment>
       {props.type === 'Single' && (
