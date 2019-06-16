@@ -2,12 +2,12 @@ import * as React from 'react';
 import './video-container.css';
 
 export interface CarouselProps {
-  videoId: String;
+  videoId: string;
   width?: string | number;
   height?: string | number;
 }
 
-const VideoContainer: React.SFC<CarouselProps> = props => {
+const VideoContainer: React.FunctionComponent<CarouselProps> = props => {
   return (
     <div
       style={{

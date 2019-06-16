@@ -5,7 +5,7 @@ export interface PageLoadingProps {
   nav: boolean;
 }
 
-const PageLoading: React.SFC<PageLoadingProps> = props => {
+const PageLoading: React.FunctionComponent<PageLoadingProps> = props => {
   return (
     <div className="load-container">
       {props.nav && (

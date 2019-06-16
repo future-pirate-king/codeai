@@ -1,14 +1,14 @@
 import * as React from 'react';
 import './navbar.css';
-import { StatisticsModel } from '../../store/reducers/channelReducer';
 import { NavLink } from 'react-router-dom';
+import { StatisticsModel } from '../../@types/channel.types';
 
 export interface NavBarProps {
-  className?: String;
+  className?: string;
   statistics?: StatisticsModel;
 }
 
-const NavBar: React.SFC<NavBarProps> = props => {
+const NavBar: React.FunctionComponent<NavBarProps> = props => {
   const { statistics } = props;
   return (
     <React.Fragment>
