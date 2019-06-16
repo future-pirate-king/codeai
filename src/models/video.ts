@@ -1,6 +1,6 @@
 import { Action, Thunk, action, thunk } from 'easy-peasy';
-import { YOUTUBE_API_KEY } from '../environment';
 import { VideoModel } from '../@types/video.types';
+import { fetchVideoList } from '../services/video.service';
 
 export interface VideoReduxModel {
   videos: VideoModel[];
@@ -11,43 +11,7 @@ export interface VideoReduxModel {
 const video: VideoReduxModel = {
   videos: [],
   fetchVideos: thunk(async (action, playlistId: string) => {
-    const res = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playlistId}&key=${YOUTUBE_API_KEY}&part=snippet&maxResults=10`
-    );
-    const data = await res.json();
-    const playlistItems = data.items;
-    const videoList: VideoModel[] = [];
-
-    if (playlistItems) {
-      let videoIdList: String = '';
-      playlistItems.map((item: any) => {
-        videoIdList += item.snippet.resourceId.videoId + ',';
-      });
-
-      const r = await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?id=${videoIdList.slice(
-          0,
-          videoIdList.length - 1
-        )}&key=${YOUTUBE_API_KEY}&part=snippet,statistics`
-      );
-      const d = await r.json();
-      const itemList = d.items;
-
-      itemList.map((item: any) => {
-        videoList.push({
-          videoId: item.id,
-          thumbnail: item.snippet.thumbnails.default,
-          title: item.snippet.title,
-          publishedAt: item.snippet.publishedAt,
-          statistics: {
-            likes: item.statistics.likeCount,
-            disLikes: item.statistics.dislikeCount,
-            views: item.statistics.viewCount
-          }
-        });
-      });
-      action.getVideos(videoList);
-    }
+    action.getVideos(await fetchVideoList(playlistId));
   }),
   getVideos: action((state, payload: VideoModel[]) => {
     state.videos = payload;

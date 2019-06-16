@@ -2,7 +2,7 @@ import * as React from 'react';
 import './video-container.css';
 
 export interface CarouselProps {
-  videoId: String;
+  videoId: string;
   width?: string | number;
   height?: string | number;
 }

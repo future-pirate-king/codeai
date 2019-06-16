@@ -1,6 +1,6 @@
 import { Action, action, thunk, Thunk } from 'easy-peasy';
-import { YOUTUBE_API_KEY, channelId } from '../environment';
 import { ChannelModel } from '../@types/channel.types';
+import { fetchChannel } from '../services/channel.service';
 
 export interface ChannelReduxModel {
   channel: ChannelModel;
@@ -25,31 +25,11 @@ const initialState: ChannelModel = {
 const channel: ChannelReduxModel = {
   channel: initialState,
   fetchChannel: thunk(async action => {
-    const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?key=${YOUTUBE_API_KEY}&id=${channelId}&part=contentDetails,statistics`
-    );
-    const data = await response.json();
-    action.getChannel(filterResponse(data));
+    action.getChannel(await fetchChannel());
   }),
   getChannel: action((state, payload: ChannelModel) => {
     state.channel = { ...payload, loading: false };
   })
-};
-
-const filterResponse = (response: any): ChannelModel => {
-  const channel = response.items[0];
-  return {
-    id: channel.id,
-    contentDetails: {
-      relatedPlaylists: {
-        uploads: channel.contentDetails.relatedPlaylists.uploads
-      }
-    },
-    statistics: {
-      subscriberCount: channel.statistics.subscriberCount,
-      videoCount: channel.statistics.videoCount
-    }
-  };
 };
 
 export default channel;

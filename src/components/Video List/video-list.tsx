@@ -24,6 +24,7 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
     if (this.state.redirect) {
       return <Redirect push to={`/videos/${this.state.id}`} />;
     }
+
     return (
       <div className="video-list-container">
         <table className="centered highlight">
@@ -51,7 +52,7 @@ class VideoList extends React.Component<VideoListProps, VideoListState> {
                             width="120"
                             height="80"
                             className="z-depth-2"
-                            src={video.thumbnail!.url as string}
+                            src={video.thumbnail!.url}
                           />
                           <div className="content">
                             <span
