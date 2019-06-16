@@ -1,18 +1,19 @@
 import { createStore, EasyPeasyConfig } from 'easy-peasy';
-import * as firebase from 'firebase';
+import { firebase } from '@firebase/app';
+import 'firebase/firestore';
 import { getFirebase } from 'react-redux-firebase';
-import { getFirestore } from 'redux-firestore';
+import { getFirestore, reduxFirestore } from 'redux-firestore';
 import { firebaseConfig } from './environment';
 import model from './models';
 
 firebase.initializeApp(firebaseConfig);
-firebase.firestore();
 
 const StoreConfig: EasyPeasyConfig = {
   injections: {
     getFirebase,
     getFirestore
-  }
+  },
+  compose: reduxFirestore(firebase)
 };
 
 const store = createStore(model, StoreConfig);

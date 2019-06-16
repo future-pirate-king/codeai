@@ -4,8 +4,8 @@ import VideoContainer from '../Video Container/video-container';
 import ChannelNews from '../Channel News/channel-news';
 import Footer from '../footer/footer';
 import PageLoading from '../Loading Spinner/page-loading';
-import { ChannelModel } from '../../models/channel';
 import { useStoreActions, useStoreState } from '../../store';
+import { ChannelModel } from '../../@types/channel.types';
 
 export interface WrapperProps {
   channel: ChannelModel;
@@ -18,7 +18,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = ({ channel }) => {
   React.useEffect(() => {
     const playlistId = channel.contentDetails.relatedPlaylists.uploads;
     fetchVideos(playlistId);
-  }, [videos]);
+  }, []);
 
   return (
     <React.Fragment>

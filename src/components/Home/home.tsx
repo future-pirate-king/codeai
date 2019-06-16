@@ -11,7 +11,7 @@ const Home: React.FunctionComponent<{}> = () => {
 
   React.useEffect(() => {
     fetchChannel();
-  }, [channel]);
+  }, []);
 
   return (
     <React.Fragment>

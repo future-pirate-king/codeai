@@ -25,20 +25,40 @@ const initScrollspy = () => {
 };
 
 const Article: React.FunctionComponent<ArticleProps> = ({ match }) => {
-  const { title, tableOfContents, contents, loading } = useStoreState(
+  const { id, title, tableOfContents, contents } = useStoreState(
     state => state.article.article
   );
 
-  const fetchArticle = useStoreActions(action => action.article.fetchArticle);
+  const { loading, isArticlePresent } = useStoreState(state => state.article);
+
+  const { fetchArticle, setArticlePresence } = useStoreActions(
+    action => action.article
+  );
 
   React.useEffect(() => {
-    const { id } = match.params;
+    const urlId = match.params.id;
 
-    fetchArticle(id);
+    if (id !== urlId) {
+      fetchArticle(urlId);
 
-    highlightAll();
-    initScrollspy();
-  });
+      highlightAll();
+      initScrollspy();
+    }
+
+    return () => {
+      // resetting article presence
+      setArticlePresence(true);
+    };
+  }, []);
+
+  if (!isArticlePresent) {
+    return (
+      <React.Fragment>
+        <NavBar />
+        <p>No article present</p>
+      </React.Fragment>
+    );
+  }
 
   return !loading ? (
     <React.Fragment>

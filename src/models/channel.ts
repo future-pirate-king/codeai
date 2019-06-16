@@ -1,21 +1,6 @@
 import { Action, action, thunk, Thunk } from 'easy-peasy';
 import { YOUTUBE_API_KEY, channelId } from '../environment';
-
-export interface ChannelModel {
-  id: string;
-  contentDetails: {
-    relatedPlaylists: {
-      uploads: string;
-    };
-  };
-  statistics: StatisticsModel;
-  loading?: boolean;
-}
-
-export interface StatisticsModel {
-  subscriberCount: string;
-  videoCount: string;
-}
+import { ChannelModel } from '../@types/channel.types';
 
 export interface ChannelReduxModel {
   channel: ChannelModel;

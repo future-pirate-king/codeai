@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './navbar.css';
 import { NavLink } from 'react-router-dom';
-import { StatisticsModel } from '../../models/channel';
+import { StatisticsModel } from '../../@types/channel.types';
 
 export interface NavBarProps {
   className?: String;

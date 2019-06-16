@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ContentsModel } from '../../models/article';
+import { ContentsModel } from '../../@types/article.types';
+
 export interface ArticleContentProps {
   contents: ContentsModel[];
 }

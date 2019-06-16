@@ -3,7 +3,7 @@ import './video-list.css';
 // @ts-ignore
 import TimeAgo from 'timeago-react';
 import { Redirect } from 'react-router';
-import { VideoModel } from '../../models/video';
+import { VideoModel } from '../../@types/video.types';
 
 export interface VideoListProps {
   video: VideoModel[];
